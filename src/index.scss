@@ -6,6 +6,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
 
 $COLOR_MAIN: #f3096b;
+$COLOR_BG: #01000a;
 
 * {
   margin: 0px;
@@ -14,7 +15,7 @@ $COLOR_MAIN: #f3096b;
 }
 
 :root {
-  background-color: #01000a;
+  background-color: $COLOR_BG;
   color: $COLOR_MAIN;
 }
 
@@ -24,15 +25,18 @@ $COLOR_MAIN: #f3096b;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4rem;
+  gap: 5rem;
   width: fit-content;
   margin: 0px auto;
+  padding-top: 3rem;
+  box-sizing: border-box;
 }
 
 .title_wrap {
   display: flex;
   flex-direction: column;
   width: fit-content;
+
   div {
     display: flex;
     align-items: center;
@@ -53,6 +57,7 @@ $COLOR_MAIN: #f3096b;
       font-family: 'hanson';
       font-size: 180px;
       line-height: 0.78em;
+      filter: drop-shadow(0px 0px 12px rgba($COLOR_MAIN, 0.25));
     }
     
     hr {
@@ -64,25 +69,99 @@ $COLOR_MAIN: #f3096b;
   }
 }
 
+@keyframes blink-effect1 {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-effect2 {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink1 {
+  animation: blink-effect2 0.15s linear;
+}
+
+.blink2 {
+  animation: blink-effect1 0.25s linear;
+}
+
 .links {
   display: flex;
   flex-direction: column;
-  text-align: center;
   gap: 8px;
   width: 100%;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
 
   a {
+    display: flex;
+    justify-content: center;
     text-decoration: none;
     color: #fff;
-    padding: 6px 0px;
+    background: rgba($COLOR_MAIN, 0.02);
+    padding: 8px 0px;
     border-radius: 10px;
-
+    outline: 1px solid $COLOR_MAIN;
+    box-shadow: 0px 0px 12px rgba($COLOR_MAIN, 0.25);
     
     &:hover {
+      // color: #000;
+      // background: #fff;
       background: #fff1;
       outline: 1px solid #fff;
+      box-shadow: 0px 0px 12px rgba(#fff, 0.25);
+    }
+
+    span {
+      // width: 85px;
+      display: flex;
+      align-items: center;
+      // justify-content: space-between;
+      justify-content: center;
+      gap: 3px;
+    }
+    
+    svg {
+      fill: #fff;
+      width: 15px;
+      height: 15px;
     }
   }
 }
