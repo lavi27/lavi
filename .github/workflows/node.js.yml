@@ -32,3 +32,4 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: github_pages
+        file_pattern: 'dist/*'
