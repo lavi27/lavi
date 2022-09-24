@@ -31,4 +31,4 @@ jobs:
     - name: Git Auto Commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        repository: 'github_pages'
+        branch: github_pages
