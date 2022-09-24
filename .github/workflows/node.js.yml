@@ -22,10 +22,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - name: Git Auto Commit
-      uses: stefanzweifel/git-auto-commit-action@v4
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        branch: github_pages
-        file_pattern: 'dist/*'
-        create_branch: true
-        
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        publish_branch: github_pages
+
