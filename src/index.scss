@@ -1,70 +1,88 @@
+@font-face {
+  font-family: 'hanson';
+  src: url('../public/Hanson-Bold.ttf') format('truetype');
+}
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+
+$COLOR_MAIN: #f3096b;
+
+* {
+  margin: 0px;
+  font-family: 'Pretendard';
+  user-select: none;
+}
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  background-color: #01000a;
+  color: $COLOR_MAIN;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+.App {
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+  width: fit-content;
+  margin: 0px auto;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+.title_wrap {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 6px;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+    &.title {
+      padding: 0px;
+      padding-bottom: 12px;
+    }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+    p {
+      font-size: 13px;
+      font-weight: 200;
+    }
+    
+    h1 {
+      font-family: 'hanson';
+      font-size: 180px;
+      line-height: 0.78em;
+    }
+    
+    hr {
+      border: 0;
+      width: 40px;
+      height: 1px;
+      background: $COLOR_MAIN;
+    }
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 200;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    padding: 6px 0px;
+    border-radius: 10px;
+
+    
+    &:hover {
+      background: #fff1;
+      outline: 1px solid #fff;
+    }
   }
 }
