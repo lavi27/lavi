@@ -39,7 +39,7 @@ export default function index() {
           <hr />
         </div>
         <div className='title'>
-          <img src="../public/logo.png" />
+          <img src="/logo.png" />
         </div>
         <div>
           <p>2016.02.24 ~ {time}</p>
