@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'hanson';
-  src: url('../public/Hanson-Bold.ttf') format('truetype');
-}
-
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css");
 
 $COLOR_MAIN: #f3096b;
 $COLOR_BG: #01000a;
@@ -14,9 +9,52 @@ $COLOR_BG: #01000a;
   user-select: none;
 }
 
-:root {
+body {
   background-color: $COLOR_BG;
-  color: $COLOR_MAIN;
+  // background: hotpink;
+  // box-shadow: inset 0 0 20px #fff;
+  // height: 180px;
+}
+
+@keyframes wiremove {
+  from {
+    background-position: 0px -100%;
+  }
+  to {
+    background-position: 0px 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.grid {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: url(../public/grid.png);
+  animation:
+    wiremove 50s linear infinite,
+    fadeIn 0.6s linear;
+}
+
+.vignetting {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient( circle, transparent 80%, #000000 100%), transparent;
 }
 
 .App {
@@ -41,23 +79,34 @@ $COLOR_BG: #01000a;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 6px;
+    color: $COLOR_MAIN;
 
     &.title {
-      padding: 0px;
-      padding-bottom: 12px;
+      padding: 10px 0px;
+
+      img {
+        width: 530px;
+        filter: drop-shadow(0px 0px 12px rgba($COLOR_MAIN, 0.25));
+      }
+    }
+
+    h1 {
+      font-size: 180px;
+      line-height: 0.78em;
+      filter: drop-shadow(0px 0px 12px rgba($COLOR_MAIN, 0.25));
+    }
+
+    .pattern {
+      width: 300px;
+      height: 10px;
+      background: repeating-linear-gradient(45deg, transparent, transparent 3px, $COLOR_MAIN 0, $COLOR_MAIN 6px);
+      margin-left: auto;
+      margin-right: 8px;
     }
 
     p {
       font-size: 13px;
       font-weight: 200;
-    }
-    
-    h1 {
-      font-family: 'hanson';
-      font-size: 180px;
-      line-height: 0.78em;
-      filter: drop-shadow(0px 0px 12px rgba($COLOR_MAIN, 0.25));
     }
     
     hr {
@@ -114,6 +163,18 @@ $COLOR_BG: #01000a;
   }
 }
 
+@keyframes blink-effect3 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .blink1 {
   animation: blink-effect2 0.15s linear;
 }
@@ -132,28 +193,31 @@ $COLOR_BG: #01000a;
 
   a {
     display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 3px;
     text-decoration: none;
     color: #fff;
-    background: rgba($COLOR_MAIN, 0.02);
     padding: 8px 0px;
     border-radius: 10px;
-    outline: 1px solid $COLOR_MAIN;
-    box-shadow: 0px 0px 12px rgba($COLOR_MAIN, 0.25);
+
+    // backdrop-filter: blur(2px);
+    // background: rgba($COLOR_MAIN, 0.02);
+    // outline: 1px solid $COLOR_MAIN;
+    // box-shadow: 0px 0px 12px rgba($COLOR_MAIN, 0.25);
     
     &:hover {
-      // color: #000;
       // background: #fff;
+      // color: #000;
       background: #fff1;
       outline: 1px solid #fff;
       box-shadow: 0px 0px 12px rgba(#fff, 0.25);
+      animation: blink-effect3 0.1s linear;
     }
 
     span {
-      // width: 85px;
       display: flex;
       align-items: center;
-      // justify-content: space-between;
       justify-content: center;
       gap: 3px;
     }
