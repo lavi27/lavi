@@ -191,6 +191,7 @@ body {
   font-size: 20px;
   font-weight: 200;
   visibility: hidden;
+  min-width: 530px;
 
   &.show {
     visibility: unset;
@@ -200,7 +201,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3px;
     text-decoration: none;
     color: #fff;
     padding: 12px 0px;

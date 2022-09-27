@@ -15,14 +15,16 @@ export default function index() {
         loadImg.onerror = err => reject(err)
       })
     }
-
-    loadImage()
-      .then(() => {
-        setTimeout(() => {
-          setLoaded(true)
-        }, 200);
-      })
-      .catch(err => console.log("Failed to load images", err))
+    
+    if (location.pathname !== '/bg') {
+      loadImage()
+        .then(() => {
+          setTimeout(() => {
+            setLoaded(true)
+          }, 200);
+        })
+        .catch(err => console.log("Failed to load images", err))
+    }
   }, [])
 
   return (
