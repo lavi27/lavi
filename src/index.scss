@@ -63,7 +63,6 @@ body {
   gap: 5rem;
   width: fit-content;
   margin: 0px auto;
-  padding-top: 3rem;
   box-sizing: border-box;
 }
 
@@ -71,6 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  padding-top: 3rem;
 
   div {
     display: flex;
