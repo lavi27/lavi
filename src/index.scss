@@ -185,7 +185,7 @@ body {
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 200;
   visibility: hidden;
 
@@ -204,6 +204,7 @@ body {
     border-radius: 10px;
     outline: 1px solid #fff1;
     backdrop-filter: blur(3px);
+    position: relative;
     
     &:hover {
       background: rgba($COLOR_MAIN, 0.02);
@@ -216,15 +217,23 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 15px;
-      width: 170px;
-      padding-left: 8px;
+      gap: 12px;
+      width: 150px;
+      padding-left: 5px;
     }
     
-    svg {
+    .icon {
       fill: #fff;
       width: 22px;
       height: 22px;
+    }
+    
+    .arrow {
+      fill: #fff;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 10px;
     }
   }
 }
