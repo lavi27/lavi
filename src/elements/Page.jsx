@@ -6,6 +6,7 @@ export default function index() {
   const [showLinks, setShowLinks] = useState(false);
   const [hoveredItem, setHoveredItem] = useState('');
   const [viewMode, setViewMode] = useState({title: false, links: true});
+  const [asd, setAsd] = useState(false);
 
   const location = useLocation();
 
@@ -85,9 +86,19 @@ export default function index() {
         : null}
         {viewMode.contacts ?
         <div className="contacts">
-          <div>
+          <div
+            className={asd ? 'copyed' : ''}
+            onClick={() => {
+              navigator.clipboard.writeText('라비 lavi#2253')
+              setAsd(true);
+            }}
+            onAnimationEnd={() => {
+              setAsd(false);
+            }}
+          >
             <svg viewBox="0 -28.5 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M217 17c-17-8-34-14-53-17l-7 14c-19-3-39-3-58 0L92 0C73 3 56 9 39 17 6 67-3 116 1 165c22 17 44 27 65 33l14-23-22-10 5-5c42 20 88 20 130 0l5 5-22 10 14 23c21-6 43-16 65-33 5-56-9-105-38-148ZM85 135c-12 0-23-12-23-26s11-26 23-26c13 0 24 12 23 26 1 14-10 26-23 26Zm86 0c-13 0-23-12-23-26s10-26 23-26c12 0 23 12 23 26s-11 26-23 26Z" /></svg>
-            라비 lavi#2253
+            {/* 라비 lavi#2253 */}
+            {asd ? 'copyed' : '라비 lavi#2253'}
           </div>
         </div>
         : null}

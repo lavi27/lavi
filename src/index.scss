@@ -248,20 +248,51 @@ body {
   }
 }
 
+@keyframes copyed {
+  from {
+    color: $COLOR_MAIN;
+    background: rgba($COLOR_MAIN, 0.1);
+    fill: rgba($COLOR_MAIN, 1);
+  }
+  to {
+    color: rgba(#fff, 0.6);
+    background: rgba(#fff, 0.04);
+    fill: rgba(#fff, 0.6);
+  }
+}
+
 .contacts {
   color: rgba(#fff, 0.6);
   font-weight: 200;
   font-size: 13px;
 
   div {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 4px;
-  }
-
-  svg {
+    padding: 5px 6px;
+    border-radius: 5px;
     fill: rgba(#fff, 0.6);
-    width: 14px;
-    height: 14px;
+    transition: background 0.15s linear;
+
+    &:hover {
+      background: rgba(#fff, 0.03);
+    }
+
+    &.copyed {
+      // color: $COLOR_MAIN;
+      // background: rgba($COLOR_MAIN, 0.1);
+      animation: copyed 0.4s ease-in-out;
+
+      // svg {
+        // fill: rgba($COLOR_MAIN, 1);
+      // }
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 }
