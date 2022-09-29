@@ -70,7 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  padding-top: 3rem;
+  padding-top: 5rem;
 
   div {
     display: flex;
@@ -183,6 +183,18 @@ body {
   animation: blink-effect1 0.25s linear;
 }
 
+.contents {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  &.show {
+    visibility: unset;
+  }
+}
+
 .links {
   display: flex;
   flex-direction: column;
@@ -190,12 +202,7 @@ body {
   width: 100%;
   font-size: 20px;
   font-weight: 200;
-  visibility: hidden;
   min-width: 530px;
-
-  &.show {
-    visibility: unset;
-  }
 
   a {
     display: flex;
@@ -238,5 +245,23 @@ body {
       position: absolute;
       left: 10px;
     }
+  }
+}
+
+.contacts {
+  color: rgba(#fff, 0.6);
+  font-weight: 200;
+  font-size: 13px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  svg {
+    fill: rgba(#fff, 0.6);
+    width: 14px;
+    height: 14px;
   }
 }
