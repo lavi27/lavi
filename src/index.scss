@@ -1,7 +1,9 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css");
 
 $COLOR_MAIN: #f3096b;
-$COLOR_BG: #01000a;
+$COLOR_SUB: #a60a4b;
+// $COLOR_BG: #06031c;
+$COLOR_BG: rgb(0, 1, 6);
 
 * {
   margin: 0px;
@@ -31,6 +33,9 @@ body {
   }
 }
 
+$COLOR_GRID1: #ffffff06;
+$COLOR_GRID2: #ffffff03;
+
 .grid {
   position: absolute;
   z-index: -1;
@@ -38,10 +43,29 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  background: url('/grid.png');
+  // background: url('/grid.png');
+
+  background-color: transparent;
+
+  background-image: 
+    linear-gradient(0deg, transparent 9%, 
+    $COLOR_GRID1 10%, $COLOR_GRID1 12%, transparent 13%, transparent 29%, 
+    $COLOR_GRID2 30%, $COLOR_GRID2 31%, transparent 32%, transparent 49%, 
+    $COLOR_GRID2 50%, $COLOR_GRID2 51%, transparent 52%, transparent 69%, 
+    $COLOR_GRID2 70%, $COLOR_GRID2 71%, transparent 72%, transparent 89%,
+    $COLOR_GRID2 90%, $COLOR_GRID2 91%, transparent 92%, transparent),
+    linear-gradient(90deg, transparent 9%, 
+    $COLOR_GRID1 10%, $COLOR_GRID1 12%, transparent 13%, transparent 29%, 
+    $COLOR_GRID2 30%, $COLOR_GRID2 31%, transparent 32%, transparent 49%, 
+    $COLOR_GRID2 50%, $COLOR_GRID2 51%, transparent 52%, transparent 69%, 
+    $COLOR_GRID2 70%, $COLOR_GRID2 71%, transparent 72%, transparent 89%,
+    $COLOR_GRID2 90%, $COLOR_GRID2 91%, transparent 92%, transparent);
+
+  background-size: 40px 40px;
+  
   animation:
-    wiremove 50s linear infinite,
-    fadeIn 0.6s linear;
+    wiremove 90s linear infinite,
+    fadeIn 0.5s linear;
 }
 
 .vignetting {
@@ -51,7 +75,7 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  background: radial-gradient( circle, transparent 80%, #000000 100%), transparent;
+  background: radial-gradient( circle, transparent 70%, #02030f 100%), transparent;
 }
 
 .App {
@@ -63,26 +87,48 @@ body {
   gap: 5rem;
   width: fit-content;
   margin: 0px auto;
+  padding: 0px 2rem;
   box-sizing: border-box;
+  
+}
+
+@keyframes title {
+  from {
+    padding: 20px 0px;
+  }
+  to {
+    padding: 15px 0px;
+  }
 }
 
 .title_wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: fit-content;
-  padding-top: 5rem;
+  width: 100%;
+  // padding-top: 5rem;
 
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: $COLOR_MAIN;
+    color: $COLOR_SUB;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    max-width: 500px;
+    width: 100%;
 
     &.title {
-      padding: 10px 0px;
+      padding: 15px 0px;
+      width: 100%;
+      box-sizing: content-box;
+
+      animation: title 0.5s cubic-bezier(.84,.05,0,1);
 
       img {
-        width: 530px;
+        max-width: 500px;
+        width: 100%;
         filter: drop-shadow(0px 0px 12px rgba($COLOR_MAIN, 0.25));
       }
     }
@@ -94,23 +140,25 @@ body {
     }
 
     .pattern {
-      width: 300px;
-      height: 10px;
-      background: repeating-linear-gradient(45deg, transparent, transparent 3px, $COLOR_MAIN 0, $COLOR_MAIN 6px);
-      margin-left: auto;
-      margin-right: 8px;
+      // width: 280px;
+      width: 100%;
+      height: 1px;
+      background: $COLOR_SUB;
+      // background: repeating-linear-gradient(45deg, $COLOR_MAIN, $COLOR_MAIN 2px, transparent 0, transparent 5px);
+      margin: 0px 8px;
     }
 
     p {
-      font-size: 13px;
-      font-weight: 200;
+      font-size: 10px;
+      font-weight: 300;
+      flex-shrink: 0;
     }
     
     hr {
       border: 0;
-      width: 40px;
+      width: 30px;
       height: 1px;
-      background: $COLOR_MAIN;
+      background: $COLOR_SUB;
     }
   }
 }
@@ -188,7 +236,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
+  width: 100%;
 
   &.show {
     visibility: unset;
@@ -199,10 +248,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  max-width: 500px;
   width: 100%;
-  font-size: 20px;
-  font-weight: 200;
-  min-width: 530px;
 
   a {
     display: flex;
@@ -212,13 +261,13 @@ body {
     color: #fff;
     padding: 12px 0px;
     border-radius: 10px;
-    outline: 1px solid #fff1;
+    border: 1px solid #fff1;
     backdrop-filter: blur(3px);
     position: relative;
     
-    &:hover {
+    &.active {
       background: rgba($COLOR_MAIN, 0.02);
-      outline: 1px solid $COLOR_MAIN;
+      border: 1px solid $COLOR_MAIN;
       box-shadow: 0px 0px 12px rgba($COLOR_MAIN, 0.25);
       animation: blink-effect3 0.1s linear;
     }
@@ -248,16 +297,18 @@ body {
   }
 }
 
-@keyframes copyed {
+@keyframes copied {
   from {
     color: $COLOR_MAIN;
     background: rgba($COLOR_MAIN, 0.1);
     fill: rgba($COLOR_MAIN, 1);
+    border: 1px solid rgba($COLOR_MAIN, 0.2);
   }
   to {
     color: rgba(#fff, 0.6);
     background: rgba(#fff, 0.04);
     fill: rgba(#fff, 0.6);
+    border: 1px solid #fff1;
   }
 }
 
@@ -265,6 +316,10 @@ body {
   color: rgba(#fff, 0.6);
   font-weight: 200;
   font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 
   div {
     cursor: pointer;
@@ -272,18 +327,18 @@ body {
     align-items: center;
     gap: 4px;
     padding: 5px 6px;
-    border-radius: 5px;
+    border-radius: 8px;
     fill: rgba(#fff, 0.6);
     transition: background 0.15s linear;
+    width: fit-content;
+    border: 1px solid #ffffff09;
 
     &:hover {
       background: rgba(#fff, 0.03);
     }
 
-    &.copyed {
-      // color: $COLOR_MAIN;
-      // background: rgba($COLOR_MAIN, 0.1);
-      animation: copyed 0.4s ease-in-out;
+    &.copied {
+      animation: copied 0.4s linear;
 
       // svg {
         // fill: rgba($COLOR_MAIN, 1);
