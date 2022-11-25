@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Page from './elements/Page';
+import Page from './Page';
 
 export default function index() {
   const [loaded, setLoaded] = useState(false);
