@@ -60,7 +60,7 @@ export default function index() {
     <>
       {viewMode.title ? (
         <div className="title_wrap blink1">
-          <div>
+          <div className="top">
             <hr />
             <p>web developer, graphic designer, creative dreamer</p>
             <hr />
